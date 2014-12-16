@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head><title>Online-editor</title> </head>
+	<head>
+		<meta charset="UTF-8">
+		<title>Online-editor</title>
+		<script type="text/javascript" src="folder_components\angular\angular.js"></script>
+	<!--<script type="text/javascript" src="folder_components\angular-ui-router\angular-ui-router.js"></script>-->
+		<script type="text/javascript">
+			angular.module('listDocApp',[ ])
+				.controller('ListDocCtrl', [function(){
+					var self = this;
 
-	<body ng-app>
-	<input type="text" ng-model="name" placeholder="Enter your name">
+					self.docs = [
+						{name: 'First Note', done: false},
+						{name: 'Second Note', done: false},
+						{name: 'Done Note', done: true},
+						{name: 'Last Note', done: false}
+					];
+				}]); 
 
-	<!--<h1>Hello <span ng-bind="name"></span></h1>-->
+		</script>
+		
+	</head>
 
-	<h1>Hello {{ name }}</h1>
-	<script type="text/javascript" src="bower_components\angular\angular.js"></script>
+	<body ng-app="listDocApp">
+		<header>
+    		<h1>Online-editor</h1>
+  		</header>
+  		<nav>
+  				<a href="#/home" ui-sref="home">Table of documents</a> | <a href="#/about" ui-sref="edit">Edit document</a>
+  		</nav>
+
+  		<article>
+  			<table ng-controller="ListDocCtrl as ctr">		
+  				<thead>
+  						<th>Name</th>
+  						<th>Size</th>
+
+  				</thead>
+  				<tbody>
+  					<tr ng-repeat="doc in ctr.docs">
+  						<td ng-bind="doc.name"></td>
+  						<td ng-bind="doc.done"></td>
+  					</tr>
+  				</tbody>
+			</table>
+  		</article>
+  		<footer>
+    		&#169; Aksana_Tsishchanka
+  		</footer>	
+			
+					
+	</body>
 </html>
 
