@@ -11,10 +11,10 @@
 					var self = this;
 
 					self.docs = [
-						{name: 'First Note', done: false},
-						{name: 'Second Note', done: false},
-						{name: 'Done Note', done: true},
-						{name: 'Last Note', done: false}
+						{name: 'First Note', size: 6},
+						{name: 'Second Note', size: 7},
+						{name: 'Done Note', size: 12},
+						{name: 'Last Note', size: 14}
 					];
 				}]); 
 
@@ -34,13 +34,13 @@
   			<table ng-controller="ListDocCtrl as ctr">		
   				<thead>
   						<th>Name</th>
-  						<th>Size</th>
+  						<th>Size (KB)</th>
 
   				</thead>
   				<tbody>
   					<tr ng-repeat="doc in ctr.docs">
   						<td ng-bind="doc.name"></td>
-  						<td ng-bind="doc.done"></td>
+  						<td ng-bind="doc.size"></td>
   					</tr>
   				</tbody>
 			</table>
