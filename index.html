@@ -4,19 +4,37 @@
 		<meta charset="UTF-8">
 		<title>Online-editor</title>
 		<script type="text/javascript" src="folder_components\angular\angular.js"></script>
-	<!--<script type="text/javascript" src="folder_components\angular-ui-router\angular-ui-router.js"></script>-->
+		<script type="text/javascript" src="folder_components\angular-ui-router\release\angular-ui-router.js"></script>
 		<script type="text/javascript">
-			angular.module('listDocApp',[ ])
-				.controller('ListDocCtrl', [function(){
-					var self = this;
 
-					self.docs = [
+			var editDocApp = angular.module('listDocApp',["ui.router"]);
+
+				editDocApp.controller('ListDocCtrl', function($scope, $rootScope){
+					window.console.log($rootScope);
+
+					$scope.docs = [
 						{name: 'First Note', size: 6},
 						{name: 'Second Note', size: 7},
 						{name: 'Done Note', size: 12},
 						{name: 'Last Note', size: 14}
 					];
-				}]); 
+					$scope.myfunc = function(){
+						alert();
+					}
+				}); 
+
+				editDocApp.config(function($stateProvider) {
+					$stateProvider
+						.state('routerListDoc', {
+							url: "/routerListDoc",
+							templateUrl: "viewListDoc.html"
+						})
+						.state('routerEditDoc', {
+							url: "/routerEditDoc",
+							templateUrl: "viewEditDoc.html"
+						})
+
+					});
 
 		</script>
 		
@@ -27,23 +45,14 @@
     		<h1>Online-editor</h1>
   		</header>
   		<nav>
-  				<a href="#/home" ui-sref="home">Table of documents</a> | <a href="#/about" ui-sref="edit">Edit document</a>
+  				<button type="button" ui-sref="routerListDoc">Table of documents</button> <button type="button" ui-sref="routerEditDoc">Edit document</a></button>
   		</nav>
 
   		<article>
-  			<table ng-controller="ListDocCtrl as ctr">		
-  				<thead>
-  						<th>Name</th>
-  						<th>Size (KB)</th>
 
-  				</thead>
-  				<tbody>
-  					<tr ng-repeat="doc in ctr.docs">
-  						<td ng-bind="doc.name"></td>
-  						<td ng-bind="doc.size"></td>
-  					</tr>
-  				</tbody>
-			</table>
+  			<div ui-view>	
+  			</div>  			
+
   		</article>
   		<footer>
     		&#169; Aksana_Tsishchanka
