@@ -1,0 +1,14 @@
+<table ng-controller="ListDocCtrl" border="1">		
+  	<thead>
+  		<th>Name</th>
+  		<th>Size (KB)</th>
+		<th>Description</th>
+	</thead>
+	<tbody>
+		<tr ng-repeat="doc in docs">
+			<td ng-bind="doc.name"></td>
+			<td ng-bind="doc.size", ng-click="myfunc(doc)"></td>
+			<td ng-bind="doc.description"></td>
+		</tr>
+  	</tbody>
+</table>
