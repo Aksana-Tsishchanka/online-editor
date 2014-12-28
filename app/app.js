@@ -3,7 +3,6 @@ var editDocApp = angular.module('listDocApp',["ui.router"]);
 
 
 				editDocApp.service('DocsService', function() {
-					var uid = 1;
 
 					var docs = [
 						{id: 1, 'name': 'First Note', 'size': 6, 'description': 'Based on the powerful editing component'},
@@ -13,9 +12,8 @@ var editDocApp = angular.module('listDocApp',["ui.router"]);
 					];
 
 					this.save = function(doc) {
-						if (doc.id == null ) {
-							doc.id = uid++;
-							contacts.push(doc);
+						if (doc == null ) {
+							alert('new object');
 						}
 						//for existing doc
 						else {
@@ -26,16 +24,6 @@ var editDocApp = angular.module('listDocApp',["ui.router"]);
 							}
 						}
 					}
-
-					this.get = function (id) {
-						for (i in docs ) {
-							if (docs[i].id == id ) {
-								return docs[i];
-							} 
-
-						}
-					}
-
 
 					this.delete = function(id) {
 						for(i in docs) {
@@ -48,35 +36,35 @@ var editDocApp = angular.module('listDocApp',["ui.router"]);
 					this.list = function() {
 						return docs;
 					}
+
+
+					this.getDoc = function (id) {
+						for (i in docs ) {
+							if (docs[i].id == id ) {
+								return docs[i];
+							} 
+						}
+					}
+
 				});
 
 				editDocApp.controller('ListDocCtrl', function($scope, DocsService){
-					
 					$scope.docs = DocsService.list();	
-					
-
 				}); 
 
 				editDocApp.controller('EditDocCtrl', function($scope, DocsService, $stateParams){
 
-					console.log($stateParams);
+					if (!angular.isUndefined($stateParams.id)) {
+						var id = $stateParams.id;
+						$scope.doc = DocsService.getDoc(id);
+				}
 
-					$scope.docs = DocsService.list();
-
-					$scope.saveDoc = function () {
-        				DocsService.save($scope.newdoc);
-        					$scope.newdoc = {};
-    					}
-
-    				$scope.edit = function($stateParams) {
-						$scope.newdoc == angular.copy(DocsService.get(id)); 
-					}	
-										
-					
+					$scope.saveEditDoc = DocsService.save($scope.doc);
 				}); 
 
-				editDocApp.config(function($stateProvider) {
-
+				editDocApp.config(function($stateProvider, $urlRouterProvider) {
+					 // For any unmatched url, redirect to /state1
+ 					$urlRouterProvider.otherwise("routerListDoc");
 					$stateProvider
 						.state('routerListDoc', {
 							url: "/routerListDoc",
