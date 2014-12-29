@@ -13,6 +13,7 @@ var editDocApp = angular.module('listDocApp',["ui.router"]);
 						{id: 4, name: 'Last Note', size: 14, description: "Sublime Text is a sophisticated text editor for code"}
 					];
 
+					
 					self.save = function(doc) {
 						if (doc == null ) {
 							alert('new object');
