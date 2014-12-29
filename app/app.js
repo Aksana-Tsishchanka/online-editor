@@ -4,14 +4,16 @@ var editDocApp = angular.module('listDocApp',["ui.router"]);
 
 				editDocApp.service('DocsService', function() {
 
+					var self = this;
+
 					var docs = [
-						{id: 1, 'name': 'First Note', 'size': 6, 'description': 'Based on the powerful editing component'},
-						{id: 2, 'name': 'Second Note', 'size': 7, 'description': "You're encouraged"},
-						{id: 3, 'name': 'Done Note', 'size': 12, 'description': "I hope you enjoy Notepad++ as much as I enjoy coding it"},
-						{id: 4, 'name': 'Last Note', 'size': 14, 'description': "Sublime Text is a sophisticated text editor for code"}
+						{id: 1, name: 'First Note', size: 6, description: 'Based on the powerful editing component'},
+						{id: 2, name: 'Second Note', size: 7, description: "You're encouraged"},
+						{id: 3, name: 'Done Note', size: 12, description: "I hope you enjoy Notepad++ as much as I enjoy coding it"},
+						{id: 4, name: 'Last Note', size: 14, description: "Sublime Text is a sophisticated text editor for code"}
 					];
 
-					this.save = function(doc) {
+					self.save = function(doc) {
 						if (doc == null ) {
 							alert('new object');
 						}
@@ -25,7 +27,7 @@ var editDocApp = angular.module('listDocApp',["ui.router"]);
 						}
 					}
 
-					this.delete = function(id) {
+					self.delete = function(id) {
 						for(i in docs) {
 							if (docs[i].id == id) {
 								docs.splice(i,1);
@@ -33,12 +35,12 @@ var editDocApp = angular.module('listDocApp',["ui.router"]);
 						}
 					}
 
-					this.list = function() {
+					self.list = function() {
 						return docs;
 					}
 
 
-					this.getDoc = function (id) {
+					self.getDoc = function (id) {
 						for (i in docs ) {
 							if (docs[i].id == id ) {
 								return docs[i];
