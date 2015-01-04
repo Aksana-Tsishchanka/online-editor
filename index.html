@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Online-editor</title>		
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Online-editor</title>		
 	</head>
 
-	<body ng-app="listDocApp">
-		<header>
-    		<h1>Online-editor</h1>
-  		</header>
-  		<nav>
-  				<button type="button" ui-sref="routerListDoc">Table of documents</button><button type="button" ui-sref="routerEditDoc">Edit document</a></button>
-  		</nav>
+  <body ng-app="listDocApp">
+    <header>
+      <h1>Online-editor</h1>
+    </header>
+    <nav>
+      <button type="button" ui-sref="list">Table of documents</button>
+      <button type="button" ui-sref="edit">Edit document</a></button>
+    </nav>
+  	
+    <article>
+      <div ui-view>	
+      </div>  			
+    </article>
+  	
+    <footer>&#169; Aksana_Tsishchanka</footer>
 
-  		<article>
-
-  			<div ui-view>	
-  			</div>  			
-
-  		</article>
-  		<footer>
-    		&#169; Aksana_Tsishchanka
-  		</footer>		
-  		<script type="text/javascript" src="folder_components\angular\angular.js"></script>
-		<script type="text/javascript" src="folder_components\angular-ui-router\release\angular-ui-router.js"></script>
-		<script type="text/javascript" src="app\app.js"></script>		
-	</body>
+    <script type="text/javascript" src="folder_components\angular\angular.js"></script>
+    <script type="text/javascript" src="folder_components\angular-ui-router\release\angular-ui-router.js"></script>
+    <script type="text/javascript" src="app\app.js"></script>	
+    <script type="text/javascript" src="app\components\editDoc\editDocCTRL.js"></script>
+    <script type="text/javascript" src="app\components\listDoc\listDocCTRL.js"></script>	
+  </body>
 </html>
 
