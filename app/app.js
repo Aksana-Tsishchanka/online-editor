@@ -1,4 +1,4 @@
-var editDocApp = angular.module('listDocApp',["ui.router"]);
+var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
 
     editDocApp.service('DocsService', function() {
         var docs = [
