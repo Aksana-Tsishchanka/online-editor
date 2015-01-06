@@ -1,13 +1,13 @@
 <h1>Edit document</h1>
-	<form>
-			<input type="text" ng-model="doc.name" required ng-minlenght="10">
-			<label>Name</label>
-		<br>	
-			<input type="text" ng-model="doc.size" required ng-minlenght="5">
-			<label>Size</label>
-		<br>
-			<textarea  wrap="hard" rows="5" cols="30" type="text" ng-model="doc.description" ng-minlenght="5"></textarea>
-			<label>Description</label>
-		<br>
-		<input type="submit" value="Save" ng-click="saveEditDoc()">
-	</form>
+  <form>
+    <input type="text" ng-model="doc.name" required ng-minlenght="10">
+    <label>Name</label>
+    <br>  
+    <input type="text" ng-model="doc.size" required ng-minlenght="5">
+    <label class="label label-default">Size</label>
+    <br>
+    <textarea  wrap="hard" rows="5" cols="30" type="text" ng-model="doc.description" ng-minlenght="5"></textarea>
+    <label>Description</label>
+    <br>
+    <input type="submit" value="Save" ng-click="saveEditDoc()">
+  </form>
