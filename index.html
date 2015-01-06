@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!--scale app to the size of window space available-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8"/>
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	    <!--scale app to the size of window space available-->
+	    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	    <link rel="stylesheet" href="folder_components\bootstrap\dist\css\bootstrap.css">
+	    <link rel="stylesheet" href="assets\css\style.css"/>
 		<title>Online-editor</title>		
 	</head>
 
   <body ng-app="listDocApp">
-    <header>
-      <h1>Online-editor</h1>
-    </header>
-    <nav>
-      <button type="button" ui-sref="list">Table of documents</button>
-      <button type="button" ui-sref="edit">Edit document</a></button>
-    </nav>
-  	
-    <article>
-      <div ui-view>	
-      </div>  			
-    </article>
-  	
-    <footer>&#169; Aksana_Tsishchanka</footer>
+    <div class="container">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h1>Online-editor</h1> 
+          <button type="button" ui-sref="list">Table of documents</button>
+          <button type="button" ui-sref="edit">Edit document</a></button>
+        </div>
 
+      	<div class="panel-body" ui-view>		
+        </div>
+      	<div class="panel-footer">
+          <footer>&#169; Aksana_Tsishchanka</footer>
+      </div> 
+    </div>
     <script type="text/javascript" src="folder_components\angular\angular.js"></script>
     <script type="text/javascript" src="folder_components\angular-ui-router\release\angular-ui-router.js"></script>
     <script type="text/javascript" src="folder_components\angular-bootstrap\ui-bootstrap.js"></script>

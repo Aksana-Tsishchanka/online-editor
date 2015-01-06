@@ -44,7 +44,7 @@ var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
 
     editDocApp.config(function($stateProvider, $urlRouterProvider) {
         // For any unmatched url, redirect to /viewListDoc
-        $urlRouterProvider.otherwise("home.list");
+        $urlRouterProvider.otherwise("list");
         $stateProvider
             .state('list', {
                 url: "/list",
