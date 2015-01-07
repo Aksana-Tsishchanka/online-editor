@@ -1,4 +1,4 @@
-var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
+var editDocApp = angular.module('listDocApp',["ui.router", "ui.router.tabs"]);
 
     editDocApp.service('DocsService', function() {
         var docs = [
@@ -58,3 +58,17 @@ var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
                 })
 
     });
+
+    editDocApp.controller('TabsCTRL', ['$scope', function ($scope) {
+
+        $scope.tabData   = [
+      {
+        heading: 'Documents',
+        route:   'list'
+      },
+      {
+        heading: 'Edit document',
+        route:   'edit'
+      }
+    ];
+    }]);
