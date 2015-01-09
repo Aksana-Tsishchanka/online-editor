@@ -44,18 +44,38 @@ var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
 
     editDocApp.config(function($stateProvider, $urlRouterProvider) {
         // For any unmatched url, redirect to /viewListDoc
-        $urlRouterProvider.otherwise("/home/list");
+        $urlRouterProvider.otherwise("/list");
         $stateProvider
-            .state("home", { abstract : true, url:"/home", templateUrl: "index.html"})
-                .state('home.list', {
-                url: "/list",
-                 templateUrl: "app/components/listDoc/viewListDoc.html",
-                 controller: "ListDocCtrl"
+                .state('list', {
+                    url: "/list",
+                    templateUrl: "app/components/listDoc/viewListDoc.html",
+                    controller: "ListDocCtrl"
                 })
-                .state('home.edit', {
-                url: "/edit/:id",
-                templateUrl: "app/components/editDoc/viewEditDoc.html",
-                controller: "EditDocCtrl"
+                .state('edit', {
+                    url: "/edit/:id",
+                    templateUrl: "app/components/editDoc/viewEditDoc.html",
+                    controller: "EditDocCtrl"
                 })
+    });
 
+    editDocApp.controller('TabsCTRL', function($rootScope, $scope, $state){
+        
+        $scope.tabs = [
+            { heading: "Documents", route: "list", active: false},
+            { heading: "Edit document", route: "edit", active: false}     
+        ];
+
+        $scope.go = function(route) {
+            $state.go(route);
+        };
+
+        $scope.active = function(route) {
+            return $state.is(route);
+        };
+
+        $scope.$on("$sateChangesSuccess", function() {
+            $scope.tabs.forEach(function(tab) {
+                tab.active = $scope.active(tab.route)
+            });
+        });
     });
