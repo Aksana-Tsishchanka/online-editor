@@ -1,14 +1,14 @@
 <h1><small>Edit document</small></h1>
   <form class="form">
 
-    <div class="form-group">
+    <div class="form-group" name="editForm" >
   		<label for="nameField">Name</label>
-  		<input id="nameField" type="text" ng-model="doc.name" class="form-control" required ng-minlenght="10" placeholder="File Name">
+  		<input id="nameField" type="text" ng-model="doc.name" class="form-control" name="nameField" ng-required="true" ng-minlenght="10" placeholder="File Name">
   	</div>
     
     <div class="form-group">
     	<label for="sizeFiled" placeholder="Size">Size</label>
-    	<input id="sizeFiled" type="text" ng-model="doc.size" required ng-minlenght="5" class="form-control">
+    	<input id="sizeFiled" name="sizeFiled" type="text" ng-model="doc.size" ng-required="true" ng-minlenght="5" class="form-control">
  	  </div>
 
  	  <div class="form-group">
@@ -22,5 +22,5 @@
 
       <div id="descField" contenteditable="true" ng-bind="doc.description" class="form-control"></div>
       </div>
-    <input type="submit" value="Save" ng-click="saveEditDoc()">
+    <input type="submit" value="Save" ng-click="saveEditDoc()" ng-disabled="editForm.$invalid" >
   </form>
