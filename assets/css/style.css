@@ -1,12 +1,14 @@
 .nav, .pagination, .carousel, .panel-title a { 
 	cursor: pointer;
 }
+
 .form-control.ng-valid {
-background-color: #CCF5E0;
+	background-color: #CCF5E0;
 }
-.form-control.ng-dirty.ng-invalid-required {
-background-color: #FFAD99;
+.form-control.ng-pristine {
+	background-color: #E6E6FA;
 }
-.form-control.ng-dirty.ng-invalid-minlength {
-background-color: #FF99C2;
+
+.form-control.ng-dirty.ng-invalid {
+	background-color: #FFCCE0;
 }

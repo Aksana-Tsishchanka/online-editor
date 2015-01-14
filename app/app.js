@@ -10,7 +10,7 @@ var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
                   
         this.save = function(doc) {
             if (doc == null ) {
-                alert('new object');
+               // alert('new object');
             }
             //for existing doc
             else {
