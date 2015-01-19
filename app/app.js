@@ -60,10 +60,12 @@ var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
 
     editDocApp.controller('TabsCTRL', function($rootScope, $scope, $state){
         
-        $scope.tabs = [
+        $rootScope.tabs = [
             { heading: "Documents", route: "list", active: false},
             { heading: "Edit document", route: "edit", active: false}     
         ];
+
+        $scope.tabs = $rootScope.tabs;
 
         $scope.go = function(route) {
             $state.go(route);
@@ -73,9 +75,25 @@ var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
             return $state.is(route);
         };
 
-        $scope.$on("$sateChangesSuccess", function() {
+        $scope.$on("$stateChangesSuccess", function() {
             $scope.tabs.forEach(function(tab) {
                 tab.active = $scope.active(tab.route)
             });
         });
+    });
+
+    editDocApp.directive("editor", function() {
+            var directive = {};
+
+            directive.restrict = "A";
+
+            directive.template = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'bold\');\" class=\"btn-sm btn-info\">B</button>";
+/*
+            "<button id="toggle_bolt" onclick="document.execCommand('italic');" class="btn-sm btn-primary">I</button>" +
+
+            "<button id="toggle_bolt" onclick="document.execCommand('underline');" class="btn-sm btn-info">U</button>";
+            */
+
+            return directive;
+
     });
