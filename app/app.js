@@ -82,18 +82,24 @@ var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
         });
     });
 
-    editDocApp.directive("editor", function() {
+    editDocApp.directive("divEditor", function() {
             var directive = {};
+
+            var btmBold = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'bold\');\" class=\"btn-sm btn-info\">B</button>";
+            var btmItalic = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'italic\');\" class=\"btn-sm btn-primary\">I</button>";
+            var btmUnderline = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'underline\');\" class=\"btn-sm btn-info\">U</button>";
+            var divEditor = "<div class=\"form-control editor\" onClick=\"this.contentEditable=\'true\';\"> You can edit text in this place </div>"; 
 
             directive.restrict = "A";
 
-            directive.template = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'bold\');\" class=\"btn-sm btn-info\">B</button>";
-/*
-            "<button id="toggle_bolt" onclick="document.execCommand('italic');" class="btn-sm btn-primary">I</button>" +
 
-            "<button id="toggle_bolt" onclick="document.execCommand('underline');" class="btn-sm btn-info">U</button>";
-            */
+            directive.template = "<div class=\"editContainer\">" + 
+                btmBold + btmItalic + btmUnderline +
+                divEditor + "</div>";
 
+                
+                
+        
             return directive;
 
     });
