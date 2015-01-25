@@ -5,6 +5,8 @@ editDocApp.controller('ListDocCtrl', function($scope, $rootScope, DocsService){
 
 	$scope.docs = DocsService.list();   
 
+	
+	
 	$scope.delete = function(id) {
 		DocsService.delete(id);
 	}

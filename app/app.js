@@ -83,23 +83,44 @@ var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
     });
 
     editDocApp.directive("divEditor", function() {
-            var directive = {};
+        var directive = {};
 
-            var btmBold = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'bold\');\" class=\"btn-sm btn-info\">B</button>";
-            var btmItalic = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'italic\');\" class=\"btn-sm btn-primary\">I</button>";
-            var btmUnderline = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'underline\');\" class=\"btn-sm btn-info\">U</button>";
-            var divEditor = "<div class=\"form-control editor\" onClick=\"this.contentEditable=\'true\';\"> You can edit text in this place </div>"; 
+        var btmBold = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'bold\');\" class=\"btn-sm btn-info\">B</button>";
+        var btmItalic = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'italic\');\" class=\"btn-sm btn-primary\" >I</button>";
+        var btmUnderline = "<button id=\"toggle_bolt\" onclick=\"document.execCommand(\'underline\');\" class=\"btn-sm btn-info\">U</button>";
+           // var divEditor = "<div class=\"form-control editor\" onClick=\"this.contentEditable=\'true\';\" ng-model=\"doc.description\">{{doc.description}}</div>"; 
 
-            directive.restrict = "A";
+        directive.restrict = "A";
+        directive.transclude = "true";
 
+        directive.template = btmBold + btmItalic + btmUnderline;
 
-            directive.template = "<div class=\"editContainer\">" + 
-                btmBold + btmItalic + btmUnderline +
-                divEditor + "</div>";
+        return directive;
+	});
 
-                
-                
-        
-            return directive;
+	editDocApp.directive("editor", function() {
+		var directive = { };
+		directive.restrict = "A";
 
-    });
+		directive.require = "ngModel";
+
+        directive.link = function(scope, element, attrs, ngModel) {
+
+           	function read() {
+           		ngModel.$setViewValue(element.html());
+           	}
+
+           	ngModel.$render = function() {
+           		element.html(ngModel.$viewValue || "");
+           	};
+
+           	element.bind("blur keyup change", function() {
+           		scope.$apply(read);
+           	});
+          };
+
+        return directive;
+	});
+
+           
+           
