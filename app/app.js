@@ -1,4 +1,4 @@
-var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap"]);
+var editDocApp = angular.module('listDocApp',["ui.router", "ui.bootstrap", "ngSanitize"]);
 
     editDocApp.service('DocsService', function() {
         var docs = [
