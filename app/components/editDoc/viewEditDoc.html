@@ -30,7 +30,6 @@
       <div editor class="form-control editor" onClick="this.contentEditable='true';" ng-model="doc.description">
       </div> 
     </div>
-    <p ng-bind-html="doc.descriptionHtmlSafe"></p>
-    <input type="submit" class="btn-lg btn-default" value="Save" ng-click="saveEditDoc()">
+    <input type="submit" class="btn-lg btn-default" value="Save" ng-click="saveEditDoc()" ui-sref="list" >
 
   </form>
