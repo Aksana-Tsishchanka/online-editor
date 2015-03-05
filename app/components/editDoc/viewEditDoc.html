@@ -25,9 +25,9 @@
 
  	<div class="form-group">
       <label for="descField" placeholder="Description">Description</label>
-      <div div-editor class="editContainer"> 
+      <div button-panel class="editContainer"> 
       </div>
-      <div editor class="form-control editor" onClick="this.contentEditable='true';" ng-model="doc.description">
+      <div editor class="form-control editor" onclick="this.contentEditable='true';" ng-model="doc.description">
       </div> 
     </div>
     <input type="submit" class="btn-lg btn-default" value="Save" ng-click="saveEditDoc()" ui-sref="list" >
