@@ -1,4 +1,4 @@
 online-editor
 =============
 
-Online edodor of documents
+Online editor of documents
